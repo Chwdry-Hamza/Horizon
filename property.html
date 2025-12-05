@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Property Details | HORIZON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html">HORIZON</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loadingState" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center; color: var(--accent-color);">
+            <div style="font-size: 3rem; margin-bottom: 20px;">⏳</div>
+            <p style="font-size: 1.2rem;">Loading property details...</p>
+        </div>
+    </div>
+
+    <!-- Property Content (will be populated by JavaScript) -->
+    <div id="propertyContent" style="display: none;"></div>
+
+    <!-- Not Found State -->
+    <div id="notFoundState" style="display: none; min-height: 80vh; padding: 100px 20px; text-align: center;">
+        <h1 style="font-family: var(--heading-font); font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;">Property Not Found</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 40px; color: var(--text-muted);">The property you're looking for doesn't exist or has been removed.</p>
+        <a href="properties.html" class="cta-btn">View All Properties</a>
+    </div>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="logo">HORIZON</div>
+            <p>Your premier partner for luxury real estate in Dubai. Experience the extraordinary.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get In Touch</h3>
+                <p>Sheikh Zayed Road, Dubai, UAE</p>
+                <p>+971 4 123 4567</p>
+                <p>hello@horizonluxury.ae</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 HORIZON Luxury Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Get property ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = urlParams.get('id');
+
+        if (!propertyId) {
+            showNotFound();
+        } else {
+            loadPropertyDetails(propertyId);
+        }
+
+        async function loadPropertyDetails(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/properties/${id}`);
+
+                if (!response.ok) {
+                    throw new Error('Property not found');
+                }
+
+                const property = await response.json();
+                displayProperty(property);
+            } catch (error) {
+                console.error('Error loading property:', error);
+                showNotFound();
+            }
+        }
+
+        function displayProperty(property) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('propertyContent').style.display = 'block';
+            document.getElementById('pageTitle').textContent = `${property.title} | HORIZON`;
+
+            const images = property.images && property.images.length > 0
+                ? property.images
+                : ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop'];
+
+            const features = property.features || [];
+
+            const content = `
+                <!-- Property Header -->
+                <section class="property-header">
+                    <div class="container">
+                        <div class="breadcrumb fade-in">
+                            <a href="index.html">Home</a> / <a href="properties.html">Properties</a> / <span>${property.title}</span>
+                        </div>
+                        <div class="property-title-section fade-in">
+                            <div>
+                                <span class="property-status">${property.status.toUpperCase().replace('-', ' ')}</span>
+                                ${property.featured ? '<span class="property-status" style="background: var(--accent-color); margin-left: 10px;">⭐ FEATURED</span>' : ''}
+                                <h1>${property.title}</h1>
+                                <p class="property-location">📍 ${property.location}</p>
+                            </div>
+                            <div class="property-price-main">
+                                <span class="price-label">Price</span>
+                                <span class="price-amount">${formatNumber(property.price)}</span>
+                                <span class="price-currency">AED</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Gallery -->
+                <section class="property-gallery">
+                    <div class="gallery-main fade-in">
+                        <div class="main-image" id="mainImage" style="background-image: url('${images[0]}');">
+                            ${images.length > 1 ? `
+                                <button class="gallery-btn prev" id="prevBtn">‹</button>
+                                <button class="gallery-btn next" id="nextBtn">›</button>
+                                <div class="image-counter"><span id="currentImage">1</span> / <span id="totalImages">${images.length}</span></div>
+                            ` : ''}
+                        </div>
+                        ${images.length > 1 ? `
+                            <div class="gallery-thumbnails">
+                                ${images.map((img, index) => `
+                                    <div class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" style="background-image: url('${img}');"></div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </section>
+
+                <!-- Property Details -->
+                <section class="property-content">
+                    <div class="container">
+                        <div class="property-layout">
+
+                            <!-- Main Content -->
+                            <div class="property-main-content">
+
+                                <!-- Quick Stats -->
+                                <div class="quick-stats fade-in">
+                                    <div class="stat-box">
+                                        <div class="stat-icon">🛏️</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${property.bedrooms}</span>
+                                            <span class="stat-label">Bedrooms</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-icon">🛁</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${property.bathrooms}</span>
+                                            <span class="stat-label">Bathrooms</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-icon">📐</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${formatNumber(property.area)}</span>
+                                            <span class="stat-label">Sq Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-icon">🚗</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${property.parking}</span>
+                                            <span class="stat-label">Parking</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-icon">📅</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${property.yearBuilt}</span>
+                                            <span class="stat-label">Year Built</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box">
+                                        <div class="stat-icon">🏠</div>
+                                        <div class="stat-info">
+                                            <span class="stat-value">${property.type.charAt(0).toUpperCase() + property.type.slice(1)}</span>
+                                            <span class="stat-label">Type</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="property-section fade-in">
+                                    <h2>About This Property</h2>
+                                    <p>${property.description}</p>
+                                </div>
+
+                                ${features.length > 0 ? `
+                                    <!-- Features -->
+                                    <div class="property-section fade-in">
+                                        <h2>Key Features</h2>
+                                        <ul class="features-list">
+                                            ${features.map(feature => `<li>✓ ${feature}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                ` : ''}
+
+                                <!-- Share -->
+                                <div class="property-section fade-in">
+                                    <h2>Share This Property</h2>
+                                    <div class="share-buttons">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="share-btn">Facebook</a>
+                                        <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(property.title)}" target="_blank" class="share-btn">Twitter</a>
+                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" class="share-btn">LinkedIn</a>
+                                        <a href="mailto:?subject=${encodeURIComponent(property.title)}&body=${encodeURIComponent(window.location.href)}" class="share-btn">Email</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sidebar -->
+                            <div class="property-sidebar">
+                                <div class="sidebar-card fade-in">
+                                    <h3>Contact Agent</h3>
+                                    <form class="contact-form-small">
+                                        <input type="text" placeholder="Your Name" required>
+                                        <input type="email" placeholder="Your Email" required>
+                                        <input type="tel" placeholder="Phone Number" required>
+                                        <textarea placeholder="Message" rows="4" required></textarea>
+                                        <button type="submit" class="cta-btn">Send Message</button>
+                                    </form>
+                                </div>
+
+                                <div class="sidebar-card fade-in">
+                                    <h3>Property Information</h3>
+                                    <div class="info-list">
+                                        <div class="info-item">
+                                            <span class="info-label">Property ID:</span>
+                                            <span class="info-value">${property.id}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Type:</span>
+                                            <span class="info-value">${property.type.charAt(0).toUpperCase() + property.type.slice(1)}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Status:</span>
+                                            <span class="info-value">${property.status.replace('-', ' ').toUpperCase()}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Year Built:</span>
+                                            <span class="info-value">${property.yearBuilt}</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Area:</span>
+                                            <span class="info-value">${formatNumber(property.area)} sqft</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            document.getElementById('propertyContent').innerHTML = content;
+
+            // Initialize gallery if multiple images
+            if (images.length > 1) {
+                initGallery(images);
+            }
+
+            // Trigger scroll animations
+            observeElements();
+        }
+
+        function initGallery(images) {
+            let currentIndex = 0;
+            const mainImage = document.getElementById('mainImage');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const currentImageSpan = document.getElementById('currentImage');
+
+            function updateGallery(index) {
+                currentIndex = index;
+                mainImage.style.backgroundImage = `url('${images[index]}')`;
+                currentImageSpan.textContent = index + 1;
+                thumbnails.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+
+            prevBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateGallery(currentIndex);
+            });
+
+            nextBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateGallery(currentIndex);
+            });
+
+            thumbnails.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => updateGallery(index));
+            });
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function showNotFound() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('notFoundState').style.display = 'block';
+        }
+
+        // Scroll animations
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | HORIZON Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="admin-body">
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <h2>HORIZON</h2>
+        <a href="#" onclick="logout()" class="mobile-logout">🚪</a>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <h2>HORIZON</h2>
+            <p>Admin Panel</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="nav-item" onclick="logout()">
+                <span class="nav-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-header">
+            <div>
+                <h1>Properties Management</h1>
+                <p class="subtitle">Manage all your luxury properties</p>
+            </div>
+            <button class="btn-primary btn-add" onclick="openAddModal()">
+                <span class="btn-icon">➕</span> Add Property
+            </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🏠</div>
+                <div class="stat-info">
+                    <h3 id="totalProperties">0</h3>
+                    <p>Total Properties</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <h3 id="totalValue">AED 0</h3>
+                    <p>Total Value</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-info">
+                    <h3 id="featuredCount">0</h3>
+                    <p>Featured</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <h3 id="forSaleCount">0</h3>
+                    <p>For Sale</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties Grid -->
+        <div class="properties-section">
+            <h2 class="section-title">All Properties</h2>
+            <div id="propertiesContainer" class="properties-cards-grid">
+                <div class="loading-placeholder">Loading properties...</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Property</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="propertyForm" class="property-form">
+                <input type="hidden" id="propertyId">
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="title">Property Title *</label>
+                        <input type="text" id="title" placeholder="e.g., Emirates Hills Mansion" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Property Type *</label>
+                        <select id="type" required>
+                            <option value="">Select Type</option>
+                            <option value="villa">Villa</option>
+                            <option value="penthouse">Penthouse</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="mansion">Mansion</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status *</label>
+                        <select id="status" required>
+                            <option value="for-sale">For Sale</option>
+                            <option value="sold">Sold</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" placeholder="e.g., Emirates Hills, Dubai" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price (AED) *</label>
+                        <input type="number" id="price" placeholder="e.g., 32000000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms *</label>
+                        <input type="number" id="bedrooms" min="1" placeholder="e.g., 5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bathrooms">Bathrooms *</label>
+                        <input type="number" id="bathrooms" min="1" placeholder="e.g., 6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="area">Area (sqft) *</label>
+                        <input type="number" id="area" placeholder="e.g., 8000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parking">Parking Spaces *</label>
+                        <input type="number" id="parking" min="0" placeholder="e.g., 3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yearBuilt">Year Built *</label>
+                        <input type="number" id="yearBuilt" min="1900" max="2030" placeholder="e.g., 2022" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="featured">
+                            <span>⭐ Mark as Featured Property</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" rows="4" placeholder="Describe the property in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="features">Features (one per line)</label>
+                    <textarea id="features" rows="6" placeholder="Private Beach Access&#10;Infinity Pool&#10;Smart Home System&#10;Gym & Spa"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Image URLs (one per line)</label>
+                    <textarea id="images" rows="4" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"></textarea>
+                    <small style="color: var(--admin-text-muted); font-size: 0.85rem;">💡 Tip: Use Unsplash or other image hosting services</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-icon">💾</span> Save Property
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('adminSidebar');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

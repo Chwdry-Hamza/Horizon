@@ -1,0 +1,80 @@
+[
+  {
+    "id": "prop-003",
+    "title": "Emirates Hills Mansion",
+    "location": "Emirates Hills, Dubai",
+    "price": 32000000,
+    "type": "mansion",
+    "status": "sold",
+    "bedrooms": 7,
+    "bathrooms": 9,
+    "area": 12000,
+    "parking": 4,
+    "yearBuilt": 2022,
+    "description": "Experience unparalleled luxury in this architectural masterpiece nestled in the prestigious Emirates Hills community.",
+    "features": [
+      "Championship Golf Course Views",
+      "Infinity Swimming Pool",
+      "Private Home Cinema",
+      "Fully Equipped Gym",
+      "Wine Cellar & Bar",
+      "Smart Home Automation",
+      "Landscaped Gardens",
+      "Maid's & Driver's Quarters",
+      "Gourmet Kitchen",
+      "BBQ & Outdoor Dining Area",
+      "Security System with CCTV",
+      "Private Elevator"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512918760532-3edbed13c51d?q=80&w=2000&auto=format&fit=crop"
+    ],
+    "featured": true,
+    "createdAt": "2025-01-25T10:00:00Z"
+  },
+  {
+    "id": "prop-004",
+    "title": "Luxury Villa",
+    "location": "palm",
+    "price": 1000000,
+    "type": "villa",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "area": 123,
+    "parking": 1,
+    "yearBuilt": 2333,
+    "status": "for-sale",
+    "featured": false,
+    "description": "34234243",
+    "features": [
+      "24"
+    ],
+    "images": [],
+    "createdAt": "2025-11-27T19:18:01.758Z"
+  },
+  {
+    "id": "prop-005",
+    "title": "232",
+    "location": "234",
+    "price": 2222,
+    "type": "villa",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "area": 34,
+    "parking": 3,
+    "yearBuilt": 2030,
+    "status": "pending",
+    "featured": false,
+    "description": "234",
+    "features": [],
+    "images": [],
+    "createdAt": "2025-11-27T19:18:43.106Z"
+  }
+]

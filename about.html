@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HORIZON Dubai Luxury Real Estate</title>
+    <meta name="description" content="Discover HORIZON - Dubai's premier luxury real estate agency. 12+ years of excellence, $2B+ in sales.">
+
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2200&auto=format&fit=crop">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8972e;
+            --black: #0f0f0f;
+            --dark: #111111;
+            --gray: #1a1a1a;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: #e5e5e5;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            background: rgba(15,15,15,0.85);
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+            transition: var(--transition);
+        }
+        
+      .logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+        
+        nav ul { display: flex; gap: 2.5rem; list-style: none; }
+        
+        nav a {
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--gold); }
+
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        
+        .cta-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .cta-btn:hover { background: #fff; transform: translateY(-2px); }
+        
+        .cta-btn.large {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,15,15,0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .mobile-nav.active { display: flex; }
+        
+        .mobile-nav a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #fff;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav a:hover { color: var(--gold); }
+
+        /* Page Hero */
+        .page-hero {
+            height: 70vh;
+            min-height: 550px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2200&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeUp 1s ease-out;
+        }
+        
+        .hero-content .tagline {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 span { font-style: italic; }
+        
+        .hero-content p { font-size: 1.15rem; color: #ccc; max-width: 600px; margin: 0 auto; }
+
+        /* Section Styles */
+        section { padding: 7rem 5%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header .tagline {
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+        }
+
+        /* About Intro */
+        .about-intro {
+            background: var(--dark);
+        }
+        
+        .intro-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .intro-text .tagline {
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .intro-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+        
+        .intro-text .lead {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .intro-text p { color: #999; margin-bottom: 1rem; }
+        
+        .intro-image {
+            position: relative;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        
+        .intro-image::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px;
+            width: 100px; height: 100px;
+            border-left: 3px solid var(--gold);
+            border-top: 3px solid var(--gold);
+            border-radius: 8px 0 0 0;
+        }
+        
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px; right: -20px;
+            width: 100px; height: 100px;
+            border-right: 3px solid var(--gold);
+            border-bottom: 3px solid var(--gold);
+            border-radius: 0 0 8px 0;
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
+            border-top: 1px solid rgba(212,175,55,0.15);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item { padding: 1rem; }
+        
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label { color: #aaa; font-size: 1rem; letter-spacing: 1px; }
+
+        /* Values */
+        .values { background: var(--black); }
+        
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: rgba(25,25,25,0.6);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: 0 20px 40px rgba(212,175,55,0.1);
+        }
+        
+        .value-icon {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+        
+        .value-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .value-card p { color: #888; font-size: 0.95rem; line-height: 1.7; }
+
+        /* Team */
+        .team { background: var(--dark); }
+        
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .team-member:hover { transform: translateY(-10px); }
+        
+      .member-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.photo-default {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-color: #1a1a1a;
+}
+
+.photo-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-color: #1a1a1a;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.team-member:hover .photo-hover {
+    opacity: 1;
+}
+
+.team-member:hover .member-photo {
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(212,175,55,0.15);
+}
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+        
+        .member-title {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        
+        .member-bio { color: #888; font-size: 0.9rem; }
+        
+        .member-phone {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 25px;
+        }
+        
+        .member-phone:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Timeline */
+        .timeline-section { background: var(--black); }
+        
+        .timeline {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--gold);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-item:last-child { margin-bottom: 0; }
+        
+        .timeline-year {
+            width: 120px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        
+        .timeline-dot {
+            width: 18px; 
+            height: 18px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 25px rgba(212,175,55,0.6);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            width: calc(50% - 80px);
+            background: rgba(25,25,25,0.8);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+        }
+        
+        .timeline-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-content p { color: #999; font-size: 1rem; line-height: 1.6; }
+        
+        /* Odd items: Content LEFT, Year RIGHT */
+        .timeline-item:nth-child(odd) .timeline-content { order: 1; text-align: right; }
+        .timeline-item:nth-child(odd) .timeline-year { order: 2; text-align: left; padding-left: 60px; }
+        
+        /* Even items: Year LEFT, Content RIGHT */
+        .timeline-item:nth-child(even) .timeline-year { order: 1; text-align: right; padding-right: 60px; }
+        .timeline-item:nth-child(even) .timeline-content { order: 2; text-align: left; }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .cta-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-banner p {
+            font-size: 1.2rem;
+            color: rgba(0,0,0,0.7);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-banner .cta-btn {
+            background: var(--black);
+            color: var(--gold);
+        }
+        
+        .cta-banner .cta-btn:hover {
+            background: #fff;
+            color: var(--black);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+        
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .footer-brand .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p { color: #888; max-width: 300px; }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover { background: var(--gold); color: var(--black); }
+        
+        .footer-links h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: #888; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .intro-image { order: -1; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+        }
+        
+        @media (max-width: 768px) {
+            header { padding: 1rem 4%; }
+            nav { display: none; }
+            .hamburger { display: flex; }
+            .header-actions .cta-btn { display: none; }
+            .page-hero { height: 55vh; min-height: 450px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            section { padding: 5rem 4%; }
+            .intro-text h2 { font-size: 2.5rem; }
+            .intro-image::before, .intro-image::after { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .stat-number { font-size: 3rem; }
+            .values-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .team-member h3 { font-size: 1.2rem; }
+            .member-bio { font-size: 0.85rem; }
+            .member-phone { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+            .timeline::before { left: 30px; }
+            .timeline-item { 
+                flex-direction: row !important; 
+                padding-left: 60px; 
+                justify-content: flex-start;
+            }
+            .timeline-dot { left: 30px; }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content { 
+                order: 2; 
+                text-align: left; 
+                width: 100%;
+            }
+            .timeline-item:nth-child(odd) .timeline-year,
+            .timeline-item:nth-child(even) .timeline-year { 
+                order: 1; 
+                text-align: left; 
+                padding: 0;
+                width: auto;
+                margin-right: 1.5rem;
+                font-size: 1.8rem;
+            }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { max-width: 100%; }
+            .social-links { justify-content: center; }
+            .cta-banner h2 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+            .stat-number { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+<div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="contact.html" style="color: var(--gold);">Contact Us</a>
+    </div>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <p class="tagline">OUR STORY</p>
+            <h1>Crafting <span>Exceptional</span> Experiences</h1>
+            <p>Building trust through transparency, expertise, and unparalleled service since 2013.</p>
+        </div>
+    </section>
+
+    <section class="about-intro">
+        <div class="intro-grid">
+            <div class="intro-text fade-in">
+                <p class="tagline">WHO WE ARE</p>
+                <h2>We Are<br>HORIZON</h2>
+                <p class="lead">
+                    Founded in the heart of Dubai, HORIZON represents the pinnacle of luxury real estate. 
+                    We don't just sell properties — we curate lifestyles and create legacies.
+                </p>
+                <p>
+                    For over a decade, we've been the trusted partner for discerning clients seeking the finest 
+                    properties in Dubai's most prestigious locations. From the tranquil shores of Palm Jumeirah 
+                    to the architectural marvels of Downtown Dubai, we've facilitated over AED 2 billion in 
+                    property transactions.
+                </p>
+                <p>
+                    Our approach is simple: understand our clients' vision, exceed their expectations, and 
+                    deliver excellence at every touchpoint.
+                </p>
+            </div>
+            <div class="intro-image fade-in">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" alt="Luxury Real Estate" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Properties Sold</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Expert Consultants</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="section-header fade-in">
+            <p class="tagline">OUR VALUES</p>
+            <h2>What Drives Us</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card fade-in">
+                <div class="value-icon">◆</div>
+                <h3>Integrity</h3>
+                <p>Transparency and honesty form the foundation of every relationship. We build trust through ethical practices.</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">★</div>
+                <h3>Excellence</h3>
+                <p>We set the highest standards in service delivery, market knowledge, and client care. Always.</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">◈</div>
+                <h3>Exclusivity</h3>
+                <p>Access to off-market properties and pre-launch opportunities gives our clients a competitive edge.</p>
+            </div>
+            <div class="value-card fade-in">
+                <div class="value-icon">⬡</div>
+                <h3>Innovation</h3>
+                <p>Cutting-edge technology and market insights power our data-driven guidance and seamless experiences.</p>
+            </div>
+        </div>
+    </section>
+
+  <div class="team-grid">
+    <div class="team-member fade-in">
+        <div class="member-photo">
+            <div class="photo-default" style="background-image: url('images/Liliana.jpeg');"></div>
+            <div class="photo-hover" style="background-image: url('QRCodes/Liliana.jpeg');"></div>
+        </div>
+        <h3>Liliana Koshkina</h3>
+        <p class="member-title">Founder & CEO</p>
+        <p class="member-bio">Visionary leader with a passion for connecting clients with their dream properties in Dubai.</p>
+        <a href="tel:+971506029598" class="member-phone">+971 50 602 9598</a>
+    </div>
+    <div class="team-member fade-in">
+        <div class="member-photo">
+            <div class="photo-default" style="background-image: url('images/Faisal.jpeg');"></div>
+            <div class="photo-hover" style="background-image: url('QRCodes/Faisal.jpeg');"></div>
+        </div>
+        <h3>Faisal Al Hashmi</h3>
+        <p class="member-title">Sales Manager</p>
+        <p class="member-bio">Expert in Dubai's luxury market with deep local knowledge and elite client network.</p>
+        <a href="tel:+971503469222" class="member-phone">+971 50 346 9222</a>
+    </div>
+    <div class="team-member fade-in">
+        <div class="member-photo">
+            <div class="photo-default" style="background-image: url('images/Jakhongir.jpeg');"></div>
+            <div class="photo-hover" style="background-image: url('QRCodes/Jakhongir.jpeg');"></div>
+        </div>
+        <h3>Jakhongir Babaev</h3>
+        <p class="member-title">Real Estate Broker</p>
+        <p class="member-bio">Skilled negotiator specializing in high-value transactions and investment properties.</p>
+        <a href="tel:+971582790059" class="member-phone">+971 58 279 0059</a>
+    </div>
+    <div class="team-member fade-in">
+        <div class="member-photo">
+            <div class="photo-default" style="background-image: url('images/Rosa.jpeg');"></div>
+            <div class="photo-hover" style="background-image: url('QRCodes/Rosa.jpeg');"></div>
+        </div>
+        <h3>Rosa Fatehi</h3>
+        <p class="member-title">Property Consultant</p>
+        <p class="member-bio">Dedicated to providing personalized service and finding the perfect match for every client.</p>
+        <a href="tel:+971522297701" class="member-phone">+971 52 229 7701</a>
+    </div>
+</div>
+
+    <section class="timeline-section">
+        <div class="section-header fade-in">
+            <p class="tagline">OUR JOURNEY</p>
+            <h2>Milestones of Excellence</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2013</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>The Beginning</h3>
+                    <p>Founded with a vision to redefine luxury real estate in Dubai.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2016</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Expansion</h3>
+                    <p>Opened offices in Palm Jumeirah and Dubai Marina, expanding our reach.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2019</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Recognition</h3>
+                    <p>Awarded "Best Luxury Real Estate Agency" by Dubai Property Awards.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Innovation</h3>
+                    <p>Launched virtual property tours and AI-powered property matching.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Today</h3>
+                    <p>Over AED 2B in sales, serving clients from 40+ countries worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Let our expert team guide you to your perfect property in Dubai.</p>
+        <a href="contact.html" class="cta-btn large">Get in Touch</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>        
+
+                <p>Your premier partner for luxury real estate in Dubai. Experience the extraordinary.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>Sheikh Zayed Road, Dubai</li>
+                    <li>+971 4 388 8888</li>
+                    <li>concierge@horizon.ae</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 HORIZON Luxury Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.padding = '1rem 5%';
+                header.style.background = 'rgba(15,15,15,0.95)';
+            } else {
+                header.style.padding = '1.5rem 5%';
+                header.style.background = 'rgba(15,15,15,0.85)';
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>

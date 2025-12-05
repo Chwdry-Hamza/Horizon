@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORIZON | Dubai Ultra-Luxury Real Estate</title>
+    <meta name="description" content="Exclusive villas & penthouses in Palm Jumeirah, Downtown Dubai & Emirates Hills.">
+
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=2200&auto=format&fit=crop">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8972e;
+            --black: #0f0f0f;
+            --dark: #111111;
+            --gray: #1a1a1a;
+            --light: #f8f8f8;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            background: rgba(15,15,15,0.8);
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+            transition: var(--transition);
+        }
+        
+         .logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--gold); }
+
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        
+        .cta-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-btn:hover { background: #fff; transform: translateY(-2px); }
+        
+        .cta-btn.large {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,15,15,0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .mobile-nav.active { display: flex; }
+        
+        .mobile-nav a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #fff;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav a:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=2200&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeUp 1.2s ease-out;
+        }
+        
+        .hero .tagline {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 600;
+            line-height: 1;
+            margin: 0.5rem 0 1.5rem;
+        }
+        
+        .hero h1 span { font-style: italic; }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            color: #ccc;
+        }
+
+        /* Sections */
+        section { padding: 6rem 5%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .tagline {
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin: 1rem 0;
+        }
+
+        /* About */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .about-text p.lead {
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            max-width: 600px;
+            color: #ccc;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .about-stats .stat-num {
+            font-size: 3rem;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1;
+        }
+        
+        .about-stats small {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .about-link {
+            color: var(--gold);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .about-link:hover { color: #fff; }
+        
+        .about-img {
+            position: relative;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        /* Properties Grid */
+        .properties {
+            background: var(--dark);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .property-card {
+            background: rgba(25,25,25,0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212,175,55,0.12);
+            transition: var(--transition);
+        }
+        
+        .property-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(212,175,55,0.12);
+            border-color: rgba(212,175,55,0.3);
+        }
+        
+        .card-img {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .price-tag {
+            position: absolute;
+            bottom: 1rem; left: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .card-info {
+            padding: 1.8rem;
+        }
+        
+        .card-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .card-info > p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        
+        .specs {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .view-details {
+            color: var(--gold);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .view-details:hover { color: #fff; }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
+            border-top: 1px solid rgba(212,175,55,0.15);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: #aaa;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--black);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .cta-banner h2 {
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+        
+        .cta-banner .cta-btn {
+            background: var(--black);
+            color: var(--gold);
+        }
+        
+        .cta-banner .cta-btn:hover {
+            background: #fff;
+            color: var(--black);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+        
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .footer-brand .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p { color: #888; max-width: 300px; }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover { background: var(--gold); color: var(--black); }
+        
+        .footer-links h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a, .footer-links li { color: #888; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        /* ==================== RESPONSIVE ==================== */
+        
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .about { grid-template-columns: 1fr; gap: 3rem; }
+            .about-img { order: -1; max-width: 600px; margin: 0 auto; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            /* Header */
+            header { padding: 1rem 4%; }
+            
+            .logo a { font-size: 1.8rem; }
+            
+            nav { display: none; }
+            
+            .hamburger { display: flex; }
+            
+            .header-actions .cta-btn { display: none; }
+            
+            /* Hero */
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+            
+            .hero-content { padding: 0 1.5rem; }
+            
+            .hero .tagline {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+                line-height: 1.1;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+                margin: 1.5rem 0;
+            }
+            
+            .cta-btn.large {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            /* Sections */
+            section { padding: 4rem 4%; }
+            
+            h2 { font-size: 2rem; }
+            
+            /* About */
+            .about { gap: 2rem; text-align: center; }
+            
+            .about-text p.lead {
+                font-size: 1rem;
+                margin: 1.5rem auto;
+            }
+            
+            .about-stats {
+                justify-content: center;
+                gap: 2rem;
+            }
+            
+            .about-stats .stat-num { font-size: 2.5rem; }
+            
+            .about-img { max-width: 100%; }
+            
+            /* Properties Grid */
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .card-img { height: 220px; }
+            
+            .card-info { padding: 1.5rem; }
+            
+            .card-info h3 { font-size: 1.3rem; }
+            
+            /* Stats */
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 4rem 2rem;
+            }
+            
+            .stat-number { font-size: 3rem; }
+            
+            /* CTA Banner */
+            .cta-banner {
+                padding: 4rem 1.5rem;
+            }
+            
+            .cta-banner h2 { font-size: 1.8rem; }
+            
+            .cta-banner p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Footer */
+            footer { padding: 3rem 4% 1.5rem; }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            
+            .footer-brand .logo { font-size: 2rem; }
+            
+            .footer-brand p {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .social-links { justify-content: center; }
+            
+            .footer-bottom {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            header { padding: 0.8rem 4%; }
+            
+            .logo a { font-size: 1.5rem; }
+            
+            .hero h1 { font-size: 2.2rem; }
+            
+            .hero .subtitle { font-size: 0.9rem; }
+            
+            .cta-btn.large {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.95rem;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .about-stats > div {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .about-stats .stat-num { font-size: 2rem; }
+            
+            .stat-number { font-size: 2.5rem; }
+            
+            .cta-banner h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+         <div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>  
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="contact.html" style="color: var(--gold);">Contact Us</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tagline">WELCOME TO DUBAI'S ULTIMATE LUXURY</p>
+            <h1>Timeless <span>Elegance</span><br>Redefined</h1>
+            <p class="subtitle">Palm Jumeirah • Downtown • Emirates Hills</p>
+            <a href="properties.html" class="cta-btn large">Explore Exclusive Listings</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-text fade-in">
+            <p class="tagline">WHO WE ARE</p>
+            <h2>Curators of Dubai's Most Extraordinary Homes</h2>
+            <p class="lead">
+                For over a decade, HORIZON has been the trusted name behind Dubai's most iconic residences. 
+                We don't just sell properties — we craft legacies.
+            </p>
+            <div class="about-stats">
+                <div>
+                    <span class="stat-num">150+</span>
+                    <small>Signature Villas</small>
+                </div>
+                <div>
+                    <span class="stat-num">$2B+</span>
+                    <small>Total Sales</small>
+                </div>
+            </div>
+            <a href="about.html" class="about-link">Discover Our Story →</a>
+        </div>
+        <div class="about-img fade-in">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop" alt="Luxury Dubai Interior" loading="lazy">
+        </div>
+    </section>
+
+    <section class="properties">
+        <div class="section-header fade-in">
+            <p class="tagline">EXCLUSIVE COLLECTION</p>
+            <h2>Featured Residences</h2>
+        </div>
+
+        <div class="grid">
+            <div class="property-card fade-in">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-e32c630bd1ba?q=80&w=1000&auto=format&fit=crop');">
+                    <div class="price-tag">AED 25M</div>
+                </div>
+                <div class="card-info">
+                    <h3>Palm Jumeirah Signature Villa</h3>
+                    <p>Frond G • Private Beach • Infinity Pool</p>
+                    <div class="specs">6 Beds • 8 Baths • 11,000 sqft</div>
+                    <a href="property.html?id=prop-001" class="view-details">View Details →</a>
+                </div>
+            </div>
+
+            <div class="property-card fade-in">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512918760532-3edbed13c51d?q=80&w=1000&auto=format&fit=crop');">
+                    <div class="price-tag">AED 48M</div>
+                </div>
+                <div class="card-info">
+                    <h3>Burj Khalifa Full-Floor Penthouse</h3>
+                    <p>Level 120 • 360° Views • Private Elevator</p>
+                    <div class="specs">5 Beds • 7 Baths • 9,200 sqft</div>
+                    <a href="property.html?id=prop-002" class="view-details">View Details →</a>
+                </div>
+            </div>
+
+            <div class="property-card fade-in">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1000&auto=format&fit=crop');">
+                    <div class="price-tag">AED 68M</div>
+                </div>
+                <div class="card-info">
+                    <h3>Emirates Hills Custom Mansion</h3>
+                    <p>Golf Course Frontage • Smart Home • Cinema</p>
+                    <div class="specs">8 Beds • 12 Baths • 18,000 sqft</div>
+                    <a href="property.html?id=prop-003" class="view-details">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" style="margin-bottom: 2rem;">
+        <div class="stat-item fade-in">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item fade-in">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Properties Curated</div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Own a Piece of Dubai's Skyline</h2>
+        <p>Work with our private client advisors to access off-market and upcoming masterpieces.</p>
+        <a href="contact.html" class="cta-btn large">Schedule Private Consultation</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                 <div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>  
+                <p>Your premier partner for luxury real estate in Dubai. Experience the extraordinary.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>Sheikh Zayed Road, Dubai</li>
+                    <li>+971 4 388 8888</li>
+                    <li>concierge@horizon.ae</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 HORIZON Luxury Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.padding = window.innerWidth <= 768 ? '0.8rem 4%' : '1rem 5%';
+                header.style.background = 'rgba(15,15,15,0.95)';
+            } else {
+                header.style.padding = window.innerWidth <= 768 ? '1rem 4%' : '1.5rem 5%';
+                header.style.background = 'rgba(15,15,15,0.8)';
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>

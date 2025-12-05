@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HORIZON Dubai Luxury Real Estate</title>
+    <meta name="description" content="Get in touch with HORIZON - Dubai's premier luxury real estate agency. Schedule a consultation today.">
+
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2200&auto=format&fit=crop">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8972e;
+            --black: #0f0f0f;
+            --dark: #111111;
+            --gray: #1a1a1a;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: #e5e5e5;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            background: rgba(15,15,15,0.85);
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+            transition: var(--transition);
+        }
+        
+          .logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+        
+        nav ul { display: flex; gap: 2.5rem; list-style: none; }
+        
+        nav a {
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--gold); }
+
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        
+        .cta-btn {
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .cta-btn:hover { background: #fff; transform: translateY(-2px); }
+        
+        .cta-btn.large {
+            padding: 1.1rem 3rem;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            height: 100vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2200&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeUp 1s ease-out;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content h1 span { font-style: italic; }
+        
+        .hero-content > p:last-of-type { font-size: 1.15rem; color: #ccc; }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 5%;
+            background: var(--dark);
+        }
+        
+        .contact-layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 5rem;
+        }
+
+        /* Contact Form */
+        .form-container {
+            background: rgba(20,20,20,0.8);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+        
+        .form-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .form-intro {
+            color: #888;
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(212,175,55,0.2);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #555; }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 20px rgba(212,175,55,0.1);
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d4af37' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            cursor: pointer;
+        }
+        
+        .form-group select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+        
+        .form-note {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+        
+        .form-success {
+            background: rgba(212,175,55,0.1);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-success.show { display: block; }
+        
+        .form-success h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: rgba(25,25,25,0.6);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+        
+        .info-card:hover {
+            border-color: rgba(212,175,55,0.3);
+            transform: translateY(-5px);
+        }
+        
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .info-item {
+            margin-bottom: 1.2rem;
+        }
+        
+        .info-item:last-child { margin-bottom: 0; }
+        
+        .info-item h4 {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        
+        .info-item p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+        
+        .info-item a {
+            color: #ddd;
+            transition: var(--transition);
+        }
+        
+        .info-item a:hover { color: var(--gold); }
+        
+        .social-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+        
+        .social-link {
+            background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Map Section */
+        .map-section {
+            height: 650px;
+            position: relative;
+        }
+        
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%) invert(92%) contrast(90%);
+            opacity: 0.8;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--dark), transparent 20%, transparent 80%, var(--black));
+            pointer-events: none;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 6rem 5%;
+            background: var(--black);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(25,25,25,0.6);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-item:hover { border-color: rgba(212,175,55,0.3); }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover { background: rgba(212,175,55,0.05); }
+        
+        .faq-question h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+        
+        .faq-toggle {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .faq-item.active .faq-toggle {
+            background: var(--gold);
+            color: var(--black);
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 2rem 1.5rem;
+        }
+        
+        .faq-answer p {
+            color: #999;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+        
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .footer-brand .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p { color: #888; max-width: 300px; }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover { background: var(--gold); color: var(--black); }
+        
+        .footer-links h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a, .footer-links li { color: #888; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: none; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-info { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 1.5rem; 
+            }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+        }
+        
+        @media (max-width: 768px) {
+            header { padding: 1rem 4%; }
+            nav ul { display: none; }
+            .page-hero { height: 50vh; min-height: 400px; }
+            .contact-section { padding: 4rem 4%; }
+            .form-container { padding: 2rem; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-info { grid-template-columns: 1fr; }
+            .faq-section { padding: 4rem 4%; }
+            .faq-question { padding: 1.2rem 1.5rem; }
+            .faq-question h3 { font-size: 1.1rem; }
+            .faq-item.active .faq-answer { padding: 0 1.5rem 1.2rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { max-width: 100%; }
+            .social-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+      <div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>        
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <p class="tagline">GET IN TOUCH</p>
+            <h1>Let's Start a <span>Conversation</span></h1>
+            <p>Whether you're buying, selling, or investing — we're here to help.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-layout">
+            
+            <!-- Contact Form -->
+            <div class="form-container fade-in">
+                <h2>Send us a Message</h2>
+                <p class="form-intro">Fill out the form below and one of our expert consultants will get back to you within 24 hours.</p>
+
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+971">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In</label>
+                            <select id="interest" name="interest">
+                                <option value="buying">Buying a Property</option>
+                                <option value="selling">Selling a Property</option>
+                                <option value="renting">Renting</option>
+                                <option value="investment">Investment Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget Range (AED)</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select Budget</option>
+                            <option value="5-10m">5M - 10M</option>
+                            <option value="10-20m">10M - 20M</option>
+                            <option value="20-50m">20M - 50M</option>
+                            <option value="50m+">50M+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-btn large">Send Message</button>
+                    <p class="form-note">* Required fields</p>
+                </form>
+
+                <div class="form-success" id="formSuccess">
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="info-card fade-in">
+                    <h3>Office Locations</h3>
+                    <div class="info-item">
+                        <h4>Main Office</h4>
+                        <p>The Opus Tower<br>Sheikh Zayed Road<br>Dubai, UAE</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Palm Jumeirah</h4>
+                        <p>Golden Mile Galleria<br>Palm Jumeirah<br>Dubai, UAE</p>
+                    </div>
+                </div>
+
+                <div class="info-card fade-in">
+                    <h3>Contact Details</h3>
+                    <div class="info-item">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+97143888888">+971 4 388 8888</a><br><a href="tel:+971501234567">+971 50 123 4567</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:concierge@horizon.ae">concierge@horizon.ae</a><br><a href="mailto:info@horizon.ae">info@horizon.ae</a></p>
+                    </div>
+                </div>
+
+                <div class="info-card fade-in">
+                    <h3>Working Hours</h3>
+                    <div class="info-item">
+                        <h4>Mon – Fri</h4>
+                        <p>9:00 AM - 7:00 PM</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Saturday</h4>
+                        <p>10:00 AM - 6:00 PM</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Sunday</h4>
+                        <p>By Appointment</p>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462561.6574523187!2d54.89782823124999!3d25.076022799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-overlay"></div>
+    </section>
+
+    <section class="faq-section">
+        <div class="section-header fade-in">
+            <p class="tagline">FAQ</p>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <h3>What areas do you specialize in?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We specialize in Dubai's most prestigious locations including Palm Jumeirah, Downtown Dubai, Dubai Marina, Emirates Hills, Arabian Ranches, and Jumeirah Bay Island.</p>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <h3>Do you work with international buyers?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. We have extensive experience working with clients from over 40 countries, providing end-to-end support including legal guidance, financing options, and visa assistance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <h3>What is your commission structure?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our commission rates are competitive and transparent. We'd be happy to discuss the details during a consultation based on your specific requirements.</p>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <h3>How long does the buying process take?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The timeline varies based on the property type and financing. Typically, ready properties can be completed in 2-4 weeks, while off-plan purchases follow the developer's timeline.</p>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <h3>Do you offer property management services?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer comprehensive property management services for investors, including tenant sourcing, maintenance coordination, and rental collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo"><a href="index.html"><img src="HorizonHomesLogo.png" alt="HORIZON"></a></div>        
+
+                <p>Your premier partner for luxury real estate in Dubai. Experience the extraordinary.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Get In Touch</h3>
+                <ul>
+                    <li>Sheikh Zayed Road, Dubai</li>
+                    <li>+971 4 388 8888</li>
+                    <li>concierge@horizon.ae</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 HORIZON Luxury Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.padding = '1rem 5%';
+                header.style.background = 'rgba(15,15,15,0.95)';
+            } else {
+                header.style.padding = '1.5rem 5%';
+                header.style.background = 'rgba(15,15,15,0.85)';
+            }
+        }, { passive: true });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('button[type="submit"]');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                this.style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

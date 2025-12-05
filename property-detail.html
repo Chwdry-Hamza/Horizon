@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emirates Hills Mansion | HORIZON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html">HORIZON</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme"><i>☀️</i></button>
+            <a href="contact.html" class="cta-btn">Contact Us</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Property Header -->
+    <section class="property-header">
+        <div class="container">
+            <div class="breadcrumb fade-in">
+                <a href="index.html">Home</a> / <a href="properties.html">Properties</a> / <span>Emirates Hills Mansion</span>
+            </div>
+            <div class="property-title-section fade-in">
+                <div>
+                    <span class="property-status">FOR SALE</span>
+                    <h1>Emirates Hills Mansion</h1>
+                    <p class="property-location">📍 Emirates Hills, Dubai, UAE</p>
+                </div>
+                <div class="property-price-main">
+                    <span class="price-label">Price</span>
+                    <span class="price-amount">AED 32,000,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Gallery -->
+    <section class="property-gallery">
+        <div class="gallery-main fade-in">
+            <div class="main-image" id="mainImage" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=2000&auto=format&fit=crop');">
+                <button class="gallery-btn prev" id="prevBtn">‹</button>
+                <button class="gallery-btn next" id="nextBtn">›</button>
+                <div class="image-counter"><span id="currentImage">1</span> / <span id="totalImages">8</span></div>
+            </div>
+            <div class="gallery-thumbnails">
+                <div class="thumbnail active" data-index="0" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="1" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="2" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="3" style="background-image: url('https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="4" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="5" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="6" style="background-image: url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=400&auto=format&fit=crop');"></div>
+                <div class="thumbnail" data-index="7" style="background-image: url('https://images.unsplash.com/photo-1512918760532-3edbed13c51d?q=80&w=400&auto=format&fit=crop');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details -->
+    <section class="property-content">
+        <div class="container">
+            <div class="property-layout">
+
+                <!-- Main Content -->
+                <div class="property-main-content">
+
+                    <!-- Quick Stats -->
+                    <div class="quick-stats fade-in">
+                        <div class="stat-box">
+                            <div class="stat-icon">🛏️</div>
+                            <div class="stat-info">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Bedrooms</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">🛁</div>
+                            <div class="stat-info">
+                                <span class="stat-value">9</span>
+                                <span class="stat-label">Bathrooms</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">📐</div>
+                            <div class="stat-info">
+                                <span class="stat-value">12,000</span>
+                                <span class="stat-label">sqft</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">🚗</div>
+                            <div class="stat-info">
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Parking</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">🏗️</div>
+                            <div class="stat-info">
+                                <span class="stat-value">2022</span>
+                                <span class="stat-label">Built</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="property-section fade-in">
+                        <h2>Property Description</h2>
+                        <p class="description-lead">
+                            Experience unparalleled luxury in this architectural masterpiece nestled in the prestigious Emirates Hills community.
+                            This contemporary mansion seamlessly blends modern design with timeless elegance, offering breathtaking golf course views
+                            and an exceptional lifestyle.
+                        </p>
+                        <p>
+                            Spanning an impressive 12,000 square feet, this magnificent residence features seven spacious bedrooms, nine lavish bathrooms,
+                            and an array of world-class amenities. The open-concept design creates a seamless flow between indoor and outdoor living spaces,
+                            perfect for entertaining and family life.
+                        </p>
+                        <p>
+                            Every detail has been meticulously crafted, from the imported Italian marble flooring to the custom-designed smart home system.
+                            Floor-to-ceiling windows flood the interiors with natural light while showcasing panoramic views of the emerald fairways and
+                            Dubai's stunning skyline.
+                        </p>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div class="property-section fade-in">
+                        <h2>Key Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Championship Golf Course Views</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Infinity Swimming Pool</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Private Home Cinema</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Fully Equipped Gym</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Wine Cellar & Bar</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Smart Home Automation</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Landscaped Gardens</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Maid's & Driver's Quarters</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Gourmet Kitchen</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>BBQ & Outdoor Dining Area</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Security System with CCTV</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span>Private Elevator</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Details -->
+                    <div class="property-section fade-in">
+                        <h2>Room by Room</h2>
+                        <div class="room-details">
+                            <div class="room-item">
+                                <h3>Master Suite</h3>
+                                <p>Expansive master bedroom with private terrace, walk-in closet, spa-like bathroom with jacuzzi and rainfall shower, and sitting area overlooking the golf course.</p>
+                            </div>
+                            <div class="room-item">
+                                <h3>Living Spaces</h3>
+                                <p>Double-height formal living room, family room with fireplace, formal dining room seating 12, and a cozy library with built-in shelving.</p>
+                            </div>
+                            <div class="room-item">
+                                <h3>Kitchen & Dining</h3>
+                                <p>Professional-grade gourmet kitchen with Sub-Zero and Wolf appliances, large center island, breakfast nook, and separate butler's pantry.</p>
+                            </div>
+                            <div class="room-item">
+                                <h3>Entertainment</h3>
+                                <p>State-of-the-art home cinema with Dolby Atmos sound, game room with bar, and climate-controlled wine cellar for 500+ bottles.</p>
+                            </div>
+                            <div class="room-item">
+                                <h3>Wellness</h3>
+                                <p>Fully equipped private gym, spa room with sauna and steam room, and yoga studio with garden views.</p>
+                            </div>
+                            <div class="room-item">
+                                <h3>Outdoor Areas</h3>
+                                <p>Resort-style infinity pool, covered outdoor lounge, professional BBQ area, children's play area, and meticulously landscaped gardens.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Tour -->
+                    <div class="property-section fade-in">
+                        <h2>Video Tour</h2>
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <div class="play-button">▶</div>
+                                <p>Click to play virtual tour</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="property-section fade-in">
+                        <h2>Location & Neighborhood</h2>
+                        <p>
+                            Emirates Hills is Dubai's most exclusive gated community, often referred to as the "Beverly Hills of Dubai."
+                            This prestigious address offers unparalleled privacy, security, and luxury living alongside Dubai's elite.
+                        </p>
+                        <div class="location-features">
+                            <div class="location-item">
+                                <strong>5 minutes</strong> to Emirates Golf Club
+                            </div>
+                            <div class="location-item">
+                                <strong>10 minutes</strong> to Dubai Marina
+                            </div>
+                            <div class="location-item">
+                                <strong>15 minutes</strong> to Downtown Dubai
+                            </div>
+                            <div class="location-item">
+                                <strong>20 minutes</strong> to DXB Airport
+                            </div>
+                            <div class="location-item">
+                                <strong>Walking distance</strong> to premium schools
+                            </div>
+                            <div class="location-item">
+                                <strong>Close proximity</strong> to fine dining & shopping
+                            </div>
+                        </div>
+                        <div class="map-embed">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.0891234567890!2d55.1234567!3d25.0987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b1234567890%3A0x1234567890abcdef!2sEmirates%20Hills%2C%20Dubai!5e0!3m2!1sen!2sae!4v1234567890"
+                                width="100%"
+                                height="400"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Floor Plans -->
+                    <div class="property-section fade-in">
+                        <h2>Floor Plans</h2>
+                        <div class="floor-plans">
+                            <div class="floor-plan-item">
+                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Ground Floor Plan">
+                                <p>Ground Floor - 6,000 sqft</p>
+                            </div>
+                            <div class="floor-plan-item">
+                                <img src="https://images.unsplash.com/photo-1545259742-12f4d1495e98?q=80&w=800&auto=format&fit=crop" alt="First Floor Plan">
+                                <p>First Floor - 5,000 sqft</p>
+                            </div>
+                            <div class="floor-plan-item">
+                                <img src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?q=80&w=800&auto=format&fit=crop" alt="Basement Floor Plan">
+                                <p>Basement - 1,000 sqft</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="property-sidebar">
+
+                    <!-- Contact Agent -->
+                    <div class="sidebar-card fade-in sticky-sidebar">
+                        <h3>Schedule a Viewing</h3>
+                        <div class="agent-info">
+                            <div class="agent-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop');"></div>
+                            <div class="agent-details">
+                                <h4>James Anderson</h4>
+                                <p>Senior Property Consultant</p>
+                            </div>
+                        </div>
+                        <form class="contact-agent-form">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <textarea rows="4" placeholder="Message (Optional)"></textarea>
+                            <button type="submit" class="cta-btn large">Request Viewing</button>
+                        </form>
+                        <div class="contact-methods">
+                            <a href="tel:+97141234567" class="contact-method">
+                                <span>📞</span> +971 4 123 4567
+                            </a>
+                            <a href="mailto:james@theopulence.ae" class="contact-method">
+                                <span>✉️</span> james@theopulence.ae
+                            </a>
+                            <a href="#" class="contact-method">
+                                <span>💬</span> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Property Info -->
+                    <div class="sidebar-card fade-in">
+                        <h3>Property Information</h3>
+                        <div class="info-list">
+                            <div class="info-row">
+                                <span class="info-label">Property ID:</span>
+                                <span class="info-value">EH-32M-001</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Property Type:</span>
+                                <span class="info-value">Mansion</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Year Built:</span>
+                                <span class="info-value">2022</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Total Area:</span>
+                                <span class="info-value">12,000 sqft</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Plot Size:</span>
+                                <span class="info-value">18,000 sqft</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Furnishing:</span>
+                                <span class="info-value">Fully Furnished</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Occupancy:</span>
+                                <span class="info-value">Ready to Move</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">View:</span>
+                                <span class="info-value">Golf Course</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mortgage Calculator -->
+                    <div class="sidebar-card fade-in">
+                        <h3>Mortgage Calculator</h3>
+                        <div class="calculator">
+                            <div class="calc-input">
+                                <label>Property Price</label>
+                                <input type="text" value="AED 32,000,000" readonly>
+                            </div>
+                            <div class="calc-input">
+                                <label>Down Payment (%)</label>
+                                <input type="number" id="downPayment" value="25" min="20" max="50">
+                            </div>
+                            <div class="calc-input">
+                                <label>Loan Term (Years)</label>
+                                <input type="number" id="loanTerm" value="25" min="5" max="30">
+                            </div>
+                            <div class="calc-input">
+                                <label>Interest Rate (%)</label>
+                                <input type="number" id="interestRate" value="3.5" step="0.1">
+                            </div>
+                            <button class="cta-btn" onclick="calculateMortgage()">Calculate</button>
+                            <div class="calc-result" id="calcResult">
+                                <p>Monthly Payment: <strong>AED 119,665</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Share Property -->
+                    <div class="sidebar-card fade-in">
+                        <h3>Share This Property</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn facebook">Facebook</button>
+                            <button class="share-btn twitter">Twitter</button>
+                            <button class="share-btn linkedin">LinkedIn</button>
+                            <button class="share-btn email">Email</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Properties -->
+    <section class="similar-properties">
+        <div class="container">
+            <h2 class="fade-in">Similar Properties</h2>
+            <div class="grid">
+                <div class="property-card fade-in">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-e32c630bd1ba?q=80&w=800&auto=format&fit=crop');">
+                        <div class="price-tag">AED 25,000,000</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Palm Jumeirah Villa</h3>
+                        <p>Signature Frond G • Private Beach Access</p>
+                        <div class="specs">
+                            <span>5 Beds</span> • <span>7 Baths</span> • <span>6,500 sqft</span>
+                        </div>
+                        <a href="#" class="view-details">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="property-card fade-in">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=800&auto=format&fit=crop');">
+                        <div class="price-tag">AED 35,000,000</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Jumeirah Bay Villa</h3>
+                        <p>Waterfront • Island Living</p>
+                        <div class="specs">
+                            <span>8 Beds</span> • <span>10 Baths</span> • <span>15,000 sqft</span>
+                        </div>
+                        <a href="#" class="view-details">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="property-card fade-in">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800&auto=format&fit=crop');">
+                        <div class="price-tag">AED 45,000,000</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Dubai Hills Estate Mansion</h3>
+                        <p>Championship Golf View • Smart Home</p>
+                        <div class="specs">
+                            <span>9 Beds</span> • <span>12 Baths</span> • <span>18,500 sqft</span>
+                        </div>
+                        <a href="#" class="view-details">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="logo">HORIZON</div>
+            <p>Your premier partner for luxury real estate in Dubai. Experience the extraordinary.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get In Touch</h3>
+                <p>Sheikh Zayed Road, Dubai, UAE</p>
+                <p>+971 4 123 4567</p>
+                <p>hello@theopulence.ae</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 The Opulence Real Estate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Gallery functionality
+        const images = [
+            'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1512918760532-3edbed13c51d?q=80&w=2000&auto=format&fit=crop'
+        ];
+
+        let currentIndex = 0;
+        const mainImage = document.getElementById('mainImage');
+        const currentImageSpan = document.getElementById('currentImage');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        function updateGallery(index) {
+            currentIndex = index;
+            mainImage.style.backgroundImage = `url('${images[index]}')`;
+            currentImageSpan.textContent = index + 1;
+
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateGallery(currentIndex);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateGallery(currentIndex);
+        });
+
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => updateGallery(index));
+        });
+
+        // Mortgage Calculator
+        function calculateMortgage() {
+            const price = 32000000;
+            const downPaymentPercent = parseFloat(document.getElementById('downPayment').value);
+            const years = parseInt(document.getElementById('loanTerm').value);
+            const rate = parseFloat(document.getElementById('interestRate').value);
+
+            const downPayment = price * (downPaymentPercent / 100);
+            const loanAmount = price - downPayment;
+            const monthlyRate = rate / 100 / 12;
+            const numPayments = years * 12;
+
+            const monthlyPayment = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numPayments) /
+                                   (Math.pow(1 + monthlyRate, numPayments) - 1);
+
+            document.getElementById('calcResult').innerHTML = `
+                <p>Down Payment: <strong>AED ${downPayment.toLocaleString('en-US', {maximumFractionDigits: 0})}</strong></p>
+                <p>Loan Amount: <strong>AED ${loanAmount.toLocaleString('en-US', {maximumFractionDigits: 0})}</strong></p>
+                <p>Monthly Payment: <strong>AED ${monthlyPayment.toLocaleString('en-US', {maximumFractionDigits: 0})}</strong></p>
+            `;
+        }
+
+        // Share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const platform = this.classList[1];
+                const url = window.location.href;
+                const title = 'Emirates Hills Mansion - AED 32,000,000';
+
+                let shareUrl;
+                switch(platform) {
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'linkedin':
+                        shareUrl = `https://www.linkedin.com/shareArticle?url=${url}&title=${title}`;
+                        break;
+                    case 'email':
+                        shareUrl = `mailto:?subject=${title}&body=Check out this property: ${url}`;
+                        break;
+                }
+
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
