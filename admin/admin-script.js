@@ -2,7 +2,7 @@
 // ADMIN PANEL - PROPERTY MANAGEMENT
 // =============================================
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 let properties = [];
 let editingPropertyId = null;
 

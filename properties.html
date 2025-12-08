@@ -651,7 +651,7 @@
         // Load properties from API
         async function loadProperties() {
             try {
-                const response = await fetch('https://horizon-theta-eight.vercel.app/api/properties');
+                const response = await fetch('/api/properties');
                 allProperties = await response.json();
                 displayProperties(allProperties);
             } catch (error) {
