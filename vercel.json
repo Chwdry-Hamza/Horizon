@@ -1,5 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/api/properties", "destination": "/api/properties" }
-  ]
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null
 }
