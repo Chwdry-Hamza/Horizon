@@ -831,7 +831,7 @@
 
         async function loadPropertyDetails(id) {
             try {
-                const response = await fetch(`http://localhost:3000/api/properties/${id}`);
+                const response = await fetch(`https://horizon-theta-eight.vercel.app/api/properties/${id}`);
 
                 if (!response.ok) {
                     throw new Error('Property not found');
